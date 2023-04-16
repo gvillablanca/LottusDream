@@ -1,0 +1,185 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'core/css/main.css' %}">
+    <link rel="shortcut icon" href="{% static 'core/img/Logotipo.png' %}" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Josefin+Sans">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <title>Solicitud</title>
+    <script src="{% static 'core/js/app.js' %}" type="text/javascript" charset="utf-8" async defer></script> 
+</head>
+  <body class="fondo-img3">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color: #e3f2fd;">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#home">
+          <img src="{% static 'core/img/Logotipo.png' %}" class="img-banner-in" style="width: 5%;">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="nav justify-content-end">
+              <li class="nav-item">
+                  <a class="nav-link" href="{% url 'home' %}">Inicio</a>
+                </li>
+            </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!--formulario de solicitud de evento-->
+    <section>
+        <div class="container">
+             <div class="row justify-content-center">
+                <div class="col-lg-8 col-md-8 col-xs-8 col-sm-8">
+                    <h1 class="titulo-principal">Cotización evento</h1>
+                    <form>
+                        <div class="form-group">
+                            <label for="nombre" class="text-formulario">Nombre completo:</label>
+                            <input type="text" id="nombre" name="nombre" placeholder="Nombre Completo" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="correo" class="text-formulario">Correo electrónico:</label>
+                            <input type="email" id="correo" name="correo" placeholder="correo@correo.com" required>
+                        </div>
+                        <div class="form-group">
+                          <label for="telefono" class="text-formulario">Teléfono</label>
+                          <input type="text" id="telefono" name="telefono" placeholder="999999999" required>
+                        </div>
+                        <div class="form-group">
+                          <label for="cantidad-personas" class="text-formulario">Cantidad de Personas</label>
+                          <input type="text" id="cantidad-personas" name="cantidad-personas" placeholder="9999" required>
+                        </div>
+                        <br>
+                        <div>
+                          <div class="form-check-inline">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                              Cumpleaños
+                            </label>
+                          </div>
+                          <div class="form-check-inline">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                            <label class="form-check-label" for="flexCheckChecked">
+                              Boda
+                            </label>                            
+                          </div>
+                          <div class="form-check-inline">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                            <label class="form-check-label" for="flexCheckChecked">
+                              Evento Social
+                            </label>                            
+                          </div>
+                          <div class="form-check-inline">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                            <label class="form-check-label" for="flexCheckChecked">
+                              Evento Empresarial
+                            </label>                            
+                          </div>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                          <label for="descripcion" class="text-formulario">Descripción o detalles de su solicitud</label>
+                          <textarea type="text" id="descripcion" name="descripcion" placeholder="Información extra sobre el evento, temática, invitados, etc." required></textarea>
+                        </div>
+                        <br>
+                        <div>
+                        <p>Elegir Locación del Evento</p>
+                          <div class="form-check-inline">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                              Salón Andrómeda
+                            </label>
+                          </div>
+                          <div class="form-check-inline">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                              Salón Casiopea
+                            </label>
+                          </div>
+                          <div class="form-check-inline">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                            <label class="form-check-label" for="flexCheckChecked">
+                              Sala Eventos Orion
+                            </label>                            
+                          </div>
+                          <div class="form-check-inline">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                            <label class="form-check-label" for="flexCheckChecked">
+                              Sala Eventos Dorado
+                            </label>                            
+                          </div>
+                          <div class="form-check-inline">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                            <label class="form-check-label" for="flexCheckChecked">
+                              Salón del Loto
+                            </label>                            
+                          </div>
+                        </div>
+                        <div>
+                          <br>
+                          <p>Elegir Extras para el evento (cada extra es un abono al servicio de arriendo de cada salón</p>
+                            <div class="form-check-inline">
+                              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                              <label class="form-check-label" for="flexCheckDefault">
+                                Animador/Animadores
+                              </label>
+                            </div>
+                            <div class="form-check-inline">
+                              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                              <label class="form-check-label" for="flexCheckDefault">
+                                Música en Vivo
+                              </label>
+                            </div>
+                            <div class="form-check-inline">
+                              <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                              <label class="form-check-label" for="flexCheckChecked">
+                                Banquetería/Catering
+                              </label>                            
+                            </div>
+                            <div class="form-check-inline">
+                              <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                              <label class="form-check-label" for="flexCheckChecked">
+                                Meseros/Anfitriones
+                              </label>                            
+                            </div>
+                            <div class="form-check-inline">
+                              <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                              <label class="form-check-label" for="flexCheckChecked">
+                                Estacionamientos
+                              </label>                            
+                            </div>
+                            <div class="form-check-inline">
+                              <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                              <label class="form-check-label" for="flexCheckChecked">
+                                Decoración/Floristería
+                              </label>                            
+                            </div>
+                            <div class="form-check-inline">
+                              <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                              <label class="form-check-label" for="flexCheckChecked">
+                                Fotografía/Servicios Audiovisuales/Drones
+                              </label>                            
+                            </div>
+                          </div>
+                        <br><br>
+                        <button type="button" class="false-btn-modal" onclick="guardar()">Enviar Cotización</button>
+                        <button type="button" class="false-btn-modal" onclick="limpiarSolicitud()">Limpiar Formulario</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+      </section>
+        <script>
+          const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+          const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+        </script>
+</body>
+</html>

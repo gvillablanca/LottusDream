@@ -1,0 +1,667 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'core/css/main.css' %}">
+    <link rel="shortcut icon" href="{% static 'core/img/Logotipo.png' %}" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat&family=Euphoria+Script&family=Quintessential&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <title>Lottus Dream</title>
+    <script src="{% static 'core/js/app.js' %}" type="text/javascript" charset="utf-8" async defer></script> 
+</head>
+<body>
+    <!--navbar-->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top" style="background-color: #e3f2fd;">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#home">
+            <img src="{% static 'core/img/Logotipo.png' %}" class="img-banner-in" style="width: 5%;">
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="nav justify-content-end">
+                <li class="nav-item">
+                    <a class="nav-link" href="#home">Inicio</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#sobre">Sobre Nosotros</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#servicios">Servicios</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#contacto">Contacto</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#ubicacion">Ubicación</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#" data-bs-toggle="modal" data-bs-target="#login" id="login-btn">Ingresar</a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-primary" id="user-btn" onclick="perfil()"><i class="bi bi-person-circle"></i> Juan F</a>
+                </li>                                          
+              </ul>
+          </div>
+        </div>
+      </nav>
+    
+    <!--modal login-->
+    <div class="modal fade" id="login" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xs">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h1 class="modal-title fs-5 titulo-principal" id="exampleModalLabel">
+                <img src="{% static 'core/img/Logotipo.png' %}" class="img-banner-in" style="width: 10%;">Ingresar</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body fondo">
+                <div class="container">
+                    <div class="row justify-content-center">
+                      <div class="col-md-6">
+                        <h2 class="text-center">Iniciar sesión</h2>
+                        <form>
+                          <div class="form-group">
+                            <input type="text" class="form-control" id="username" name="username" placeholder="Nombre de usuario" required>
+                            <br><br>
+                          </div>
+                          <div class="form-group">
+                            <input type="password" class="form-control" id="password" name="password" placeholder="Contraseña" required>
+                            <br><br>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="false-btn-modal" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#recuperar">Recuperar contraseña</button>
+                <button type="button" class="false-btn-modal" data-bs-dismiss="modal" onclick="registrar()" >Registrar Usuario</button>
+                <button type="button" class="false-btn-modal" data-bs-dismiss="modal" onclick="logear()" >Iniciar sesión</button>
+            </div>
+        </div>
+        </div>
+    </div>
+
+        <!--modal recuperar contraseña-->
+        <div class="modal fade" id="recuperar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-xl">
+          <div class="modal-content">
+              <div class="modal-header">
+              <h1 class="modal-title fs-5 titulo-principal" id="exampleModalLabel">
+                  <img src="{% static 'core/img/Logotipo.png' %}" class="img-banner-in" style="width: 10%;">Recuperar contraseña</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body fondo">
+                  <div class="container">
+                      <div class="row justify-content-center">
+                        <div class="col-md-6">
+                          <p>Ingrese su mail para recuperar su contraseña, se le enviara un enlace para reiniciar su contraseña</p>
+                          <form>
+                            <div class="form-group">
+                              <label for="correo" class="text-formulario">Correo electrónico:</label>
+                              <input type="email" id="correo" name="correo" placeholder="correo@correo.com" required>
+                          </div>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="false-btn-modal" onclick="recuperar()">Enviar</button>
+              </div>
+          </div>
+          </div>
+      </div>
+
+    <!--home-->
+    <section id="home" class="fondo">
+        <br><br>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <h1 class="titulo-principal titulo-inicio">Lottus Dream Eventos</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div id="carouselExampleIndicators" class="carousel slide">
+                        <div class="carousel-indicators">
+                          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                        </div>
+                        <div class="carousel-inner">
+                          <div class="carousel-item active">
+                            <img src="{% static 'core/img/banner1.jpg' %}" class="d-block w-100 banner img-border" alt="...">
+                          </div>
+                          <div class="carousel-item">
+                            <img src="{% static 'core/img/banner2.jpg' %}" class="d-block w-100 banner img-border" alt="...">
+                          </div>
+                          <div class="carousel-item">
+                            <img src="{% static 'core/img/banner3.jpg' %}" class="d-block w-100 banner img-border" alt="...">
+                          </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Next</span>
+                        </button>
+                      </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--about me-->
+    <section id="sobre" class="fondo">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <br>
+                    <h1 class="titulo-principal titulo-secundario">Sobre Nosotros</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <img src="{% static 'core/img/boda4.jpg' %}" alt="" class="img-ref rounded mx-auto d-block img-border">
+                </div>
+                <div class="col-4">
+                    <h1 class="titulo-principal subtitulo">Quienes Somos...</h1>
+                    <br>
+                    <p>Lottus Dream es el centro de eventos, convenciones y exhibiciones creado a la medida de nuestros clientes.</p>
+                    <p>Nuestras primeras actividades se remontan desde el año 1998, iniciando con 2 pequeños salones y aceptando eventos pequeños.</p>
+                    <p>
+                        Hoy contamos con 5 salones para los diversos eventos que puedan generarse dentro de nuestras instalaciones, complementando
+                        con lo necesario para hacer de su evento un sueño. <br> <br>
+                        Contamos con 2 salones interiores, 2 salones exteriores y uno mixto que cuenta con sala interior y exterior para eventos mas grandes
+                        y de ensueño. <br> <br>
+                        Nuestro servicio no solo se remonta a disponibilizar un espacio simplemente, contamos con un numero considerable de socios 
+                        y equipos para poder apoyar en los eventos.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--Servicio-->
+    <section id="servicios" class="fondo">
+        <br><br>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <h1 class="titulo-principal titulo-secundario">Servicios de eventos disponibles</h1>
+                </div>
+            </div>
+            <br><br><br>
+            <div class="row">
+                <div class="col-lg-3 col-md-3 d-sm-none d-md-block d-none d-sm-block">
+                    <div class="card rounded mx-auto d-block module-border-wrap" style="width: 18rem; border-image-slice: 1; border-width: 2px; border-image-source: linear-gradient(to left, #E970E0, #25AC84);">
+                        <img src="{% static 'core/img/cumpleaño.png' %}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <br>
+                          <h5 class="card-title subtitulo">Cumpleaños</h5>
+                          <br><br>
+                          <a href="#" class="false-btn" data-bs-toggle="modal" data-bs-target="#m-ev1">Información</a>
+                          <a href="{% url 'solicitud' %}" class="false-btn">Cotizar evento</a>
+                        </div>
+                      </div>
+                </div>
+                <div class="col-lg-3 col-md-3 d-sm-none d-md-block d-none d-sm-block">
+                    <div class="card rounded mx-auto d-block" style="width: 18rem; border-image-slice: 1; border-width: 2px; border-image-source: linear-gradient(to left, #E970E0, #25AC84);">
+                        <img src="{% static 'core/img/boda.png' %}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <br>
+                          <h5 class="card-title subtitulo">Bodas</h5>
+                          <br><br>
+                          <a href="#" class="false-btn" data-bs-toggle="modal" data-bs-target="#m-ev2">Información</a>
+                          <a href="{% url 'solicitud' %}" class="false-btn">Cotizar evento</a>
+                        </div>
+                      </div>
+                </div>
+                <div class="col-lg-3 col-md-3 d-sm-none d-md-block d-none d-sm-block">
+                    <div class="card rounded mx-auto d-block" style="width: 18rem; border-image-slice: 1; border-width: 2px; border-image-source: linear-gradient(to left, #E970E0, #25AC84);">
+                        <img src="{% static 'core/img/fiesta.png' %}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <br>
+                          <h5 class="card-title subtitulo">Eventos sociales</h5>
+                          <br><br>
+                          <a href="#" class="false-btn" data-bs-toggle="modal" data-bs-target="#m-ev3">Información</a>
+                          <a href="{% url 'solicitud' %}" class="false-btn">Cotizar evento</a>
+                        </div>
+                      </div>
+                </div>
+                <div class="col-lg-3 col-md-3 d-sm-none d-md-block d-none d-sm-block">
+                    <div class="card rounded mx-auto d-block" style="width: 18rem; border-image-slice: 1; border-width: 2px; border-image-source: linear-gradient(to left, #E970E0, #25AC84);">
+                        <img src="{% static 'core/img/fiesta2.png' %}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <br>
+                          <h5 class="card-title subtitulo">Eventos Empresariales</h5>
+                          <br><br>
+                          <a href="#" class="false-btn" data-bs-toggle="modal" data-bs-target="#m-ev4">Información</a>
+                          <a href="{% url 'solicitud' %}" class="false-btn">Cotizar evento</a>
+                        </div>
+                      </div>
+                </div>
+                <!--VERSION MOVIL-->
+                <div class="col-xs-12 col-sm-12 d-md-none d-lg-none d-xl-none">
+                  <div id="carouselServicio" class="carousel slide">
+                      <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#carouselServicio" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carouselServicio" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#carouselServicio" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                      </div>
+                      <div class="carousel-inner">
+                        <div class="carousel-item active">
+                          <div class="card rounded mx-auto d-block module-border-wrap" style="width: 18rem; border-image-slice: 1; border-width: 2px; border-image-source: linear-gradient(to left, #E970E0, #25AC84);">
+                            <img src="{% static 'core/img/cumpleaño.png' %}" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <br>
+                              <h5 class="card-title subtitulo">Cumpleaños</h5>
+                              <br><br>
+                              <a href="#" class="false-btn" data-bs-toggle="modal" data-bs-target="#m-ev1">Información</a>
+                              <a href="{% url 'solicitud' %}" class="false-btn">Cotizar evento</a>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="carousel-item">
+                          <div class="card rounded mx-auto d-block" style="width: 18rem; border-image-slice: 1; border-width: 2px; border-image-source: linear-gradient(to left, #E970E0, #25AC84);">
+                            <img src="{% static 'core/img/boda.png' %}" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <br>
+                              <h5 class="card-title subtitulo">Bodas</h5>
+                              <br><br>
+                              <a href="#" class="false-btn" data-bs-toggle="modal" data-bs-target="#m-ev2">Información</a>
+                              <a href="{% url 'solicitud' %}" class="false-btn">Cotizar evento</a>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="carousel-item">
+                          <div class="card rounded mx-auto d-block" style="width: 18rem; border-image-slice: 1; border-width: 2px; border-image-source: linear-gradient(to left, #E970E0, #25AC84);">
+                            <img src="{% static 'core/img/fiesta.png' %}" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <br>
+                              <h5 class="card-title subtitulo">Eventos sociales</h5>
+                              <br><br>
+                              <a href="#" class="false-btn" data-bs-toggle="modal" data-bs-target="#m-ev3">Información</a>
+                              <a href="{% url 'solicitud' %}" class="false-btn">Cotizar evento</a>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="carousel-item">
+                          <div class="card rounded mx-auto d-block" style="width: 18rem; border-image-slice: 1; border-width: 2px; border-image-source: linear-gradient(to left, #E970E0, #25AC84);">
+                            <img src="{% static 'core/img/fiesta2.png' %}" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <br>
+                              <h5 class="card-title subtitulo">Eventos Empresariales</h5>
+                              <br><br>
+                              <a href="#" class="false-btn" data-bs-toggle="modal" data-bs-target="#m-ev4">Información</a>
+                              <a href="{% url 'solicitud' %}" class="false-btn">Cotizar evento</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <button class="carousel-control-prev" type="button" data-bs-target="#carouselServicio" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                      </button>
+                      <button class="carousel-control-next" type="button" data-bs-target="#carouselServicio" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                      </button>
+                    </div>
+              </div>
+
+            </div>
+        </div>
+    </section>
+    
+    <!--modales para servicios-->
+    <!--ev1-->
+    <div class="modal fade" id="m-ev1" tabindex="-1" aria-labelledby="" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h2 class="modal-title subtitulo" id="exampleModalLabel"><i class="bi bi-stars"></i>  Cumpleaños</h2>
+              <button type="button" class="btn-close false-btn" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body fondo">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <p>Servicio disponible para 60 personas. <br>
+                                Amplio espacio con animadores y servicio de banquetería y decoración, en zona verde y amplia con juegos para niños. <br>
+                                Disponible en Horarios desde las 10:00 am hasta las 5:00 pm
+                            </p>
+                            <p>Cuenta con:</p>
+                            <ul>
+                                <li type="square">Música</li>
+                                <li type="square">Animador</li>
+                                <li type="square">Banquetería</li>
+                                <li type="square">Estacionamiento</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div id="carouselExample" class="carousel slide">
+                        <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="{% static 'core/img/cumple1.jpg' %}" class="d-block w-100 carru img-border" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{% static 'core/img/cumple2.jpg' %}" class="d-block w-100 carru img-border" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{% static 'core/img/cumple3.jpg' %}" class="d-block w-100 carru img-border" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{% static 'core/img/cumple4.jpg' %}" class="d-block w-100 carru img-border" alt="...">
+                        </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="{% url 'solicitud' %}" class="false-btn-modal">Cotizar</a>
+            </div>
+          </div>
+        </div>
+      </div>     
+
+    <!--ev2-->
+    <div class="modal fade" id="m-ev2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+          <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="exampleModalLabel"><i class="bi bi-stars"></i>  Boda</h2>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body fondo">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <p>Servicio disponible para 200 personas. <br>
+                                Amplio espacio con servicio de banquetería, meseros y decoración, en amplio salón mitad aire libre y mitad 
+                                espacio cerrado. <br>
+                                Disponible en Horarios desde las 9:00 am hasta las 1:00 am
+                            </p>
+                            <p>Cuenta con:</p>
+                            <ul>
+                                <li type="square">Música</li>
+                                <li type="square">Meseros</li>
+                                <li type="square">Banquetería</li>
+                                <li type="square">Decoración</li>
+                                <li type="square">Fotógrafo</li>
+                                <li type="square">Estacionamiento</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div id="carouselExample2" class="carousel slide">
+                            <div class="carousel-inner">
+                              <div class="carousel-item active">
+                                <img src="{% static 'core/img/boda1.jpeg' %}" class="d-block w-100 carru img-border" alt="...">
+                              </div>
+                              <div class="carousel-item">
+                                <img src="{% static 'core/img/boda2.jpg' %}" class="d-block w-100 carru img-border" alt="...">
+                              </div>
+                              <div class="carousel-item">
+                                <img src="{% static 'core/img/boda3.jpg' %}" class="d-block w-100 carru img-border" alt="...">
+                              </div>
+                              <div class="carousel-item">
+                                <img src="{% static 'core/img/boda4.jpg' %}" class="d-block w-100 carru img-border" alt="...">
+                              </div>
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample2" data-bs-slide="prev">
+                              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                              <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample2" data-bs-slide="next">
+                              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                              <span class="visually-hidden">Next</span>
+                            </button>
+                          </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="{% url 'solicitud' %}" class="false-btn-modal">Cotizar</a>
+            </div>
+          </div>
+        </div>
+      </div>      
+
+    <!--ev3-->
+    <div class="modal fade" id="m-ev3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+          <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="exampleModalLabel"><i class="bi bi-stars"></i>  Eventos sociales</h2>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body fondo">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <p>Servicio disponible para 200 personas. <br>
+                                Amplio espacio con servicio de banquetería, meseros y decoración, en amplio salón interior. <br>
+                                Disponible en Horarios desde las 9:00 am hasta las 1:00 am
+                            </p>
+                            <p>Cuenta con:</p>
+                            <ul>
+                                <li type="square">Música</li>
+                                <li type="square">Meseros</li>
+                                <li type="square">Banquetería</li>
+                                <li type="square">Decoración</li>
+                                <li type="square">Fotografía</li>
+                                <li type="square">Estacionamiento</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div id="carouselExample1" class="carousel slide">
+                            <div class="carousel-inner">
+                              <div class="carousel-item active">
+                                <img src="{% static 'core/img/salaev1.jpg' %}" class="d-block w-100 carru img-border" alt="...">
+                              </div>
+                              <div class="carousel-item">
+                                <img src="{% static 'core/img/salaev2.jpg' %}" class="d-block w-100 carru img-border" alt="...">
+                              </div>
+                              <div class="carousel-item">
+                                <img src="{% static 'core/img/salaev3.jpg' %}" class="d-block w-100 carru img-border" alt="...">
+                              </div>
+                              <div class="carousel-item">
+                                <img src="{% static 'core/img/salaev4.jpg' %}" class="d-block w-100 carru img-border" alt="...">
+                              </div>
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample1" data-bs-slide="prev">
+                              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                              <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample1" data-bs-slide="next">
+                              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                              <span class="visually-hidden">Next</span>
+                            </button>
+                          </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="{% url 'solicitud' %}" class="false-btn-modal">Cotizar</a>
+            </div>
+          </div>
+        </div>
+      </div>     
+
+    <!--ev4-->
+    <div class="modal fade" id="m-ev4" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+          <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="exampleModalLabel"><i class="bi bi-stars"></i>  Eventos Empresariales</h2>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body fondo">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                          <p>Servicio disponible para 150 personas. <br>
+                            Amplio espacio con servicio de banquetería, meseros y decoración, en amplio salón interior. <br>
+                            Disponible en Horarios desde las 9:00 am hasta las 1:00 am
+                        </p>
+                        <p>Cuenta con:</p>
+                        <ul>
+                            <li type="square">Música</li>
+                            <li type="square">Meseros</li>
+                            <li type="square">Banquetería</li>
+                            <li type="square">Decoración</li>
+                            <li type="square">Estacionamiento</li>
+                        </ul>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div id="carouselExample3" class="carousel slide">
+                            <div class="carousel-inner">
+                              <div class="carousel-item active">
+                                <img src="{% static 'core/img/see1.jpg' %}" class="d-block w-100 carru img-border" alt="...">
+                              </div>
+                              <div class="carousel-item">
+                                <img src="{% static 'core/img/see2.jpg' %}" class="d-block w-100 carru img-border" alt="...">
+                              </div>
+                              <div class="carousel-item">
+                                <img src="{% static 'core/img/see3.jpg' %}" class="d-block w-100 carru img-border" alt="...">
+                              </div>
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample3" data-bs-slide="prev">
+                              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                              <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample3" data-bs-slide="next">
+                              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                              <span class="visually-hidden">Next</span>
+                            </button>
+                          </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="{% url 'solicitud' %}" class="false-btn-modal">Cotizar</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <!--contacto-->
+    <section id="contacto" class="fondo">
+        <br><br>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <h1 class="titulo-principal titulo-secundario">Consultas y Contacto</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <div class="row justify-content-center">
+                        <div class="col-8">
+                            <h2 class="text-center titulo-principal subtitulo">Consultas</h2>
+                            <form>
+                                <div class="form-group">
+                                    <label for="nombre" class="text-formulario">Nombre completo:</label>
+                                    <input type="text" id="nombre" name="nombre" placeholder="Nombre Completo" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="fono" class="text-formulario">Fono:</label>
+                                    <input type="text" id="fono" name="fono" placeholder="+569-XXXXXXXX" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="correo" class="text-formulario">Correo electrónico:</label>
+                                    <input type="email" id="correo" name="correo" placeholder="correo@correo.com" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="mensaje" class="text-formulario">Mensaje:</label>
+                                    <textarea id="mensaje" name="mensaje" placeholder="Escriba su consulta...." required></textarea>
+                                </div>
+                                <br><br>
+                                <button type="button" class="false-btn-modal">Enviar</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <h2 class="subtitulo">Contacto</h2>
+                    <br><br>
+                    <p class="text-center"> Representante:  Emilia Soto Ruz</p>
+                    <p class="text-center"> Fono:           +569-96587432</p>
+                    <p class="text-center"> Mail:           esotosuz@gmail.com</p>
+                    <img src="{% static 'core/img/Logotipo.png' %}" alt="" class="logo rounded mx-auto d-block">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--ubicacion-->
+    <section id="ubicacion" class="fondo">
+        <br><br>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <h1 class="titulo-principal titulo-secundario">Ubicación</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-7">
+                    <br><br>
+                    <img src="{% static 'core/img/ubicacion.jpg' %}" alt="" class="lugar rounded mx-auto d-block img-border">
+                </div>
+                <div class="col-3">
+                    <br><br><br><br>
+                    <h2 class="subtitulo">Dirección</h2>
+                    <p>Av. Raúl Labbé 14190, 7690000 Lo Barnechea</p>
+                    <p>Región Metropolitana</p>
+                    <br>
+                    <a href="https://www.google.cl/maps/dir/-33.406976,-70.6609152/Nave+Digital+-+Av.+Ra%C3%BAl+Labb%C3%A9+14190,+7690000+Lo+Barnechea,+Regi%C3%B3n+Metropolitana/@-33.3982888,-70.7231417,11z/data=!3m1!4b1!4m9!4m8!1m1!4e1!1m5!1m1!1s0x9662cba41a4deae1:0xf7cf9bdade6f7738!2m2!1d-70.5003234!2d-33.3624005" 
+                    class="false-btn-modal">Ir a Google Maps</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script>
+        const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+        const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+    </script>
+    <script>
+      const myModal = document.getElementById('myModal')
+      const myInput = document.getElementById('myInput')
+
+      myModal.addEventListener('shown.bs.modal', () => {
+        myInput.focus()
+      })
+    </script>
+</body>
+</html>

@@ -1,0 +1,179 @@
+#home, #sobre, #servicios, #contacto, #ubicacion{
+    height: 100vh;
+}
+
+#user-btn{
+    display: none;
+}
+
+.titulo-inicio{
+    font-family: 'Euphoria Script', cursive;
+    font-size: 80px;
+    background: #E970E0;
+    background: -webkit-linear-gradient(to right, #E970E0 35%, #03DDFF 50%, #25AC84 65%);
+    background: -moz-linear-gradient(to right, #E970E0 35%, #03DDFF 50%, #25AC84 65%);
+    background: linear-gradient(to right, #E970E0 35%, #03DDFF 50%, #25AC84 65%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+}
+
+.titulo-secundario{
+    font-family: 'Quintessential', cursive;
+    font-size: 65px;
+    background: #E970E0;
+    background: -webkit-linear-gradient(to right, #E970E0 35%, #03DDFF 50%, #25AC84 65%);
+    background: -moz-linear-gradient(to right, #E970E0 35%, #03DDFF 50%, #25AC84 65%);
+    background: linear-gradient(to right, #E970E0 35%, #03DDFF 50%, #25AC84 65%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+}
+
+label{
+    background: #E970E0;
+    background: -webkit-linear-gradient(to right, #E970E0 35%, #03DDFF 50%, #25AC84 65%);
+    background: -moz-linear-gradient(to right, #E970E0 35%, #03DDFF 50%, #25AC84 65%);
+    background: linear-gradient(to right, #E970E0 35%, #03DDFF 50%, #25AC84 65%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+}
+
+.subtitulo{
+    font-family: 'Quintessential', cursive;
+    text-align: center;
+    margin-top: 2.3%;
+    margin-bottom: 2.3%;
+}
+
+.ir-arriba{
+    margin-top: 43%;
+    display:inline-block;
+    padding:20px;
+    font-size:20px;
+    border-radius: 15px;
+    position: fixed;
+    right: 10px;
+    border-color: black;
+}
+
+p{
+    text-align: justify;
+}
+
+.card-title{
+    text-align: center;
+}
+
+.ir-arriba:hover{
+    display:inline-block;
+    padding:20px;
+    font-size:20px;
+    cursor: pointer;
+}
+
+.banner{
+    width: auto;
+    height: 659px;
+}
+
+.carru{
+    width: auto;
+    height: 395px;  
+}
+
+.titulo-principal{
+    text-align: center;
+    margin-top: 2.3%;
+    margin-bottom: 2.3%;
+    /*font-family: 'Josefin Sans';*/
+}
+
+
+
+.img-ref{
+    width: 750px;
+    margin:auto;
+}
+
+.logo{
+    width: 200px;
+    margin:auto;
+    opacity: 80%;
+}
+
+.lugar{
+    width: 850px;
+}
+
+#nombre, #usuario, #correo, #clave, #repetir-clave, #fecha-nacimiento, 
+#direccion, #fono, #mensaje, #telefono, #cantidad-personas, #descripcion {
+    display: block;
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--bs-body-color);
+    background-color: var(--bs-form-control-bg);
+    background-clip: padding-box;
+    border: var(--bs-border-width) solid var(--bs-border-color);
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: .375rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.img-border{
+    border:3px solid #25ac84;
+    border-radius: 5px;
+}
+
+.false-btn{
+    border:1px solid #25ac84;
+    background-color: #ffff;
+    color:#25ac84;
+    padding: 4%;
+    border-radius: 6px;
+}
+
+.false-btn:hover{
+    border:1px solid #e970e0;
+    background-color: #ffff;
+    color:#e970e0;
+}
+
+.false-btn-modal{
+    border:1px solid #25ac84;
+    background-color: #ffff;
+    color:#25ac84;
+    padding: 2%;
+    border-radius: 6px;
+}
+
+.false-btn-modal:hover{
+    border:1px solid #e970e0;
+    background-color: #ffff;
+    color:#e970e0;
+}
+
+::placeholder {
+    color: #e970e0;
+    opacity: .5;
+}
+
+.fondo{
+    background-image: url("..//img/FondoIndex.png");
+}
+
+.fondo-img1{
+    background-image: url("..//img/fondoRosadoLotus.png");
+}
+
+.fondo-img3{
+    background-image: url("..//img/FondoIndex.png");
+    background-repeat: no-repeat;
+    margin-right: 4%;
+}
