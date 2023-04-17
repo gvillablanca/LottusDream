@@ -93,6 +93,9 @@ function limpiarSolicitud(){
         document.getElementById("flexCheckDefault").checked = false;
         document.getElementById("flexCheckChecked").checked = false;
         document.getElementById("descripcion").value = "";
+        const checkboxs = document.querySelectorAll('input[type="checkbox"]:checked');
+        checkboxs.forEach(checkbox => {checkbox.checked = false;
+        });
 }
 
 function solicitarArriendo() {
@@ -165,3 +168,26 @@ function recuperar() {
 
     alert("Correo enviado");
   }
+
+function guardarSolicitud(){
+    var nombreCompleto = document.getElementById("nombre").value;
+    var correoElectronico = document.getElementById("correo").value;
+    var TelefonoContacto = document.getElementById("telefono").value;
+    var cantidadPersonas = document.getElementById("cantidad-personas").value;
+    var flexCheckDefault = document.getElementById("flexCheckDefault").value;
+    var flexCheckChecked = document.getElementById("flexCheckChecked").value;
+    var descripcion = document.getElementById("descripcion").value;
+
+    checkboxs.forEach(checkbox => {checkbox.checked = false;
+      });
+
+    if (nombreCompleto === "" || correoElectronico === "" || TelefonoContacto === "" || cantidadPersonas === "" || flexCheckDefault ==="" || flexCheckChecked ==="" || descripcion ==="" ){
+        alert("Favor completar todos los campos requeridos");
+        return false;
+    }
+
+    validarMail(correoElectronico);
+
+
+    
+}
