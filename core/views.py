@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import Template, Context
-from .models import Administrador
+from .models import Usuario, Cotizacion, Evento, Proveedor, Salon, Servicio_evento
 
 # Create your views here.
 def home(request):
@@ -14,7 +14,17 @@ def usuario(request):
     return render(request, 'core/perfil-usuario.html')
 
 def administrador(request):
-    return render(request, 'core/administrador.html')
+    objectsCot = Cotizacion.objects.all()
+    objectsEvt = Evento.objects.all()
+    objectsProv = Proveedor.objects.all()
+    objectsSal = Salon.objects.all()
+
+    plantillaExterna = open("../LottusDream/core/templates/core/administrador.html")
+    template = Template(plantillaExterna.read())
+    plantillaExterna.close()
+    contexto=Context({"cotizaciones":objectsCot, "evento": objectsEvt, "salon": objectsSal, "proveedor": objectsProv})
+    documento=template.render(contexto)
+    return HttpResponse(documento)
 
 def solicitud(request):
     return render(request, 'core/solicitud.html')
@@ -22,31 +32,16 @@ def solicitud(request):
 def registroUsuario(request):
     return render(request, 'core/RegistrarUsuario.html')
 
-def pruebas(request):
-    return render(request, 'core/prueba.html')
-
 #pruebas conexion base de datos
 def pruebasRender(request):
-    res=''
-    objects = Administrador.objects.all()
-    count = 0
+    objectsU = Usuario.objects.all()
+    objectsCot = Cotizacion.objects.all()
 
-    for emp in objects:
-        if count == 4:
-            res = '&nbsp;&nbsp;&nbsp;&nbsp;' + emp.rut_admin + \
-                ' ' + emp.nombre + '&nbsp;&nbsp;&nbsp;&nbsp;||</p>'
-            count = 0 
-        else:
-            if count == 0:
-                res = ''+'||'
-            res += '' + emp.rut_admin + \
-                ' ' + emp.nombre + '||'
-            count += 1
-
-    nombre = "emiliassssss"
     plantillaExterna = open("../LottusDream/core/templates/core/prueba.html")
     template = Template(plantillaExterna.read())
     plantillaExterna.close()
-    contexto=Context({"nombre": res})
+    contexto=Context({"usuarios": objectsU, "cotizaciones":objectsCot})
     documento=template.render(contexto)
     return HttpResponse(documento)
+
+
