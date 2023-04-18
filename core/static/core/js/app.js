@@ -23,11 +23,25 @@ function perfil(){
 }
 
 function validarMail(correoElectronico){
-    var correoFormato = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}.){1,125}[A-Z]{2,63}$/i;
-    if (!correoFormato.test(correoElectronico)){
-        alert("Por favor ingrese una dirección de correo válida");
-        return false;
-    }
+  var correoFormato = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}.){1,125}[A-Z]{2,63}$/i;
+  if (!correoFormato.test(correoElectronico)){
+      alert("Por favor ingrese una dirección de correo válida");
+      return false;
+  }
+  else{
+      alert("Consulta Enviada");
+  }
+}
+
+function validarMail2(correoElectronico){
+  var correoFormato = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}.){1,125}[A-Z]{2,63}$/i;
+  if (!correoFormato.test(correoElectronico)){
+      alert("Por favor ingrese una dirección de correo válida");
+      return false;
+  }
+  else{
+    alert("Solicitud enviada, se enviara a su correo una copia");
+  }
 }
 
 function guardar() {
@@ -47,7 +61,7 @@ function guardar() {
         return false;
     }
   
-    validarMail(correoElectronico);
+    validarMail2(correoElectronico);
 
     var validarPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])([A-Za-z\d$@$!%*?&]|[^ ]){6,18}$/;
     if (!validarPassword.test(claveIngreso)){
@@ -74,7 +88,7 @@ function guardar() {
     var usuarioJSON = JSON.stringify(usuario);
         console.log(usuarioJSON);
 
-    alert("Solicitud enviada, se enviara a su correo una copia");
+    
 }
 
 function limpiar(){
@@ -174,20 +188,34 @@ function guardarSolicitud(){
     var correoElectronico = document.getElementById("correo").value;
     var TelefonoContacto = document.getElementById("telefono").value;
     var cantidadPersonas = document.getElementById("cantidad-personas").value;
-    var flexCheckDefault = document.getElementById("flexCheckDefault").value;
-    var flexCheckChecked = document.getElementById("flexCheckChecked").value;
     var descripcion = document.getElementById("descripcion").value;
+    var checkboxs = document.querySelectorAll('input[type="checkbox"]:checked');
+    var cantidad = checkboxs.length;
+    console.log(cantidad);
 
-    checkboxs.forEach(checkbox => {checkbox.checked = false;
-      });
 
-    if (nombreCompleto === "" || correoElectronico === "" || TelefonoContacto === "" || cantidadPersonas === "" || flexCheckDefault ==="" || flexCheckChecked ==="" || descripcion ==="" ){
+    if (nombreCompleto === "" || correoElectronico === "" || TelefonoContacto === "" || cantidadPersonas === "" || descripcion ==="" || cantidad === 0 ){
         alert("Favor completar todos los campos requeridos");
         return false;
     }
 
     validarMail(correoElectronico);
+    
+    limpiarSolicitud();
+    
+}
 
+function guardarConsultas(){
+    var nombreCompleto = document.getElementById("nombre").value;
+    var TelefonoContacto = document.getElementById("fono").value;
+    var correoElectronico = document.getElementById("correoConsulta").value;
+    var mensajeConsulta = document.getElementById("mensaje").value;
 
+    if (nombreCompleto === "" || TelefonoContacto === "" || correoElectronico === "" || mensajeConsulta ===""){
+        alert("Favor completar todos los campos requeridos");
+        return false;
+    }
+    
+    validarMail(correoElectronico);
     
 }
