@@ -27,6 +27,7 @@ def pruebas(request):
 
 #pruebas conexion base de datos
 def pruebasRender(request):
+    res=''
     objects = Administrador.objects.all()
     count = 0
 
@@ -42,7 +43,7 @@ def pruebasRender(request):
                 ' ' + emp.nombre + '||'
             count += 1
 
-    nombre = "emilia"
+    nombre = "emiliassssss"
     plantillaExterna = open("../LottusDream/core/templates/core/prueba.html")
     template = Template(plantillaExterna.read())
     plantillaExterna.close()
