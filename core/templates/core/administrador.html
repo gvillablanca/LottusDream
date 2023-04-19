@@ -1,4 +1,5 @@
 {% load static %}
+{% block content %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -59,14 +60,14 @@
             <div class="col-2"></div>
             <div class="col-3">
                 <h1 class="titulo-principal subtitulo">Datos Personales</h1><br><br>
-                <p>Nombre:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Emilia Soto Ruz </p>
-                <p>Correo:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;esotosuz@gmail.com </p>
-                <p>Cargo:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Representante Legal y Administración </p>
-                <p>Oficina:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Av. Raúl Labbé 14190, Lo Barnechea </p>
+                <p>Nombre:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{nombre_administrador}}</p>
+                <p>Correo:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{correo}}</p>
+                <p>Cargo:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{cargo}}</p>
+                <p>Oficina:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ubicacion}}</p>
                 <br>
                 <button type="button" class="false-btn-modal" data-bs-toggle="modal" data-bs-target="#solicitud">Solicitudes Eventos</button>
                 <button type="button" class="false-btn-modal" data-bs-toggle="modal" data-bs-target="#lista-salon">Listado de Mantenimiento</button><br><br>
-              </div>
+            </div>
             </div>
           </div>
         </div>
@@ -81,38 +82,38 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <table class="table table-bordered border-primary">
-              <tr>
-                <td></td>
-                <td>ID</td>
-                <td>NOMBRE</td>
-                <td>FECHA</td>
-                <td>HORA</td>
-                <td>SALÓN REQUERIDO</td>
-                <td>RUT</td>
-                <td>FONO</td>
-              </tr>
-              <tr>
-                <td><input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"></td>
-                <td>001</td>
-                <td>Juan Flores Vergara</td>
-                <td>21-05-2023</td>
-                <td>18:00 hrs</td>
-                <td>Salón Loto</td>
-                <td>17865444-9</td>
-                <td>966551872</td>
-              </tr>
-              <tr>
-                <td><input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"></td>
-                <td>002</td>
-                <td>Melissa Urzúa Jara</td>
-                <td>08-06-2023</td>
-                <td>19:00 hrs</td>
-                <td>Salón Orion</td>
-                <td>16258472-0</td>
-                <td>941212365</td>
-              </tr>
-            </table>
+            <table class="table table-striped-columns">
+              <thead>
+                  <tr>
+                      <td>id</td>
+                      <td>cant_personas</td>
+                      <td>tipo_evento</td>
+                      <td>detalle</td>
+                      <td>estado</td>
+                      <td>id_usuario</td>
+                      <td>id_evento</td>
+                      <td>id_salon</td>
+                  </tr>
+              </thead>
+              <tbody>
+                  {% if cotizaciones %}
+                  {% for cotizacion in cotizaciones %}
+                  <tr>
+                      <td>{{ cotizacion.id }}</td>
+                      <td>{{ cotizacion.cant_personas }}</td>
+                      <td>{{ cotizacion.tipo_evento }}</td>
+                      <td>{{ cotizacion.detalle }}</td>
+                      <td>{{ cotizacion.estado }}</td>
+                      <td>{{ cotizacion.id_usuario }}</td>
+                      <td>{{ cotizacion.id_evento }}</td>
+                      <td>{{ cotizacion.id_salon }}</td>
+                  </tr>
+                  {% endfor %}
+                  {% else %}
+                  <h5>no hay datos</h5>
+                  {% endif %}
+              </tbody>
+          </table>
           </div>
           <div class="modal-footer">
               <a href="#" class="false-btn-modal"><i class="bi bi-check2-square"></i></a>
@@ -134,150 +135,66 @@
             <div class="row">
               <div class="col-12">
                 <h4 class="subtitulo">Listado de salones</h4>
-                <table class="table table-bordered border-primary">
-                  <tr>
-                    <td></td>
-                    <td>ID</td>
-                    <td>NOMBRE SALÓN</td>
-                    <td>ESTADO</td>
-                    <td>UBICACIÓN</td>
-                  </tr>
-                  <tr>
-                    <td><input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"></td>
-                    <td>E001</td>
-                    <td>Andrómeda</td>
-                    <td>DISPONIBLE</td>
-                    <td>Av. Raúl Labbé 14190, Lo Barnechea</td>
-                  </tr>
-                  <tr>
-                    <td><input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"></td>
-                    <td>E002</td>
-                    <td>Casiopea</td>
-                    <td>RESERVADO</td>
-                    <td>Av. Vicuña Mackenna 3314, La Florida</td>
-                  </tr>
-                  <tr>
-                    <td><input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"></td>
-                    <td>INT001</td>
-                    <td>Orion</td>
-                    <td>DISPONIBLE</td>
-                    <td>Las Hualtatas 5754, Vitacura</td>
-                  </tr>
-                  <tr>
-                    <td><input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"></td>
-                    <td>INT002</td>
-                    <td>Dorado</td>
-                    <td>DISPONIBLE</td>
-                    <td>Av. Raúl Labbé 14190, Lo Barnechea</td>
-                  </tr>
-                  <tr>
-                    <td><input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"></td>
-                    <td>MEGA001</td>
-                    <td>Salón del Loto</td>
-                    <td>RESERVADO</td>
-                    <td>Av. Raúl Labbé 14190, Lo Barnechea</td>
-                  </tr>
-                </table>
+                <table class="table table-striped-columns">
+                  <thead>
+                      <tr>
+                          <td>ID</td>
+                          <td>NOMBRE</td>
+                          <td>ESTADO</td>
+                          <td>UBICACION</td>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      {% if salon %}
+                      {% for salones in salon %}
+                      <tr>
+                          <td>{{ salones.id }}</td>
+                          <td>{{ salones.nombre }}</td>
+                          <td>{{ salones.estado }}</td>
+                          <td>{{ salones.ubicacion }}</td>
+                      </tr>
+                      {% endfor %}
+                      {% else %}
+                      <h5>no hay datos</h5>
+                      {% endif %}
+                  </tbody>
+              </table>
               </div>
             </div>
             <div class="row">
               <div class="col-12">
                 <h4 class="subtitulo"> Listado Proveedores</h4>
-                <table class="table table-bordered border-primary">
-                  <tr>
-                    <td></td>
-                    <td>PROVEEDOR</td>
-                    <td>REPRESENTANTE</td>
-                    <td>DIRECCIÓN</td>
-                    <td>DETALLE</td>
-                  </tr>
-                  <tr>
-                    <td><input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"></td>
-                    <td>DJ AstoKiiD</td>
-                    <td>Leandro Torres</td>
-                    <td>Av. providencia 1043 dpto. 521 Providencia</td>
-                    <td>Música en los eventos</td>
-                  </tr>
-                  <tr>
-                    <td><input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"></td>
-                    <td>La Corte Elite</td>
-                    <td>Andrea Vargas</td>
-                    <td>Dr. Carlos Lorca Tobar 644, Recoleta</td>
-                    <td>Servicio de Meseros</td>
-                  </tr>
-                  <tr>
-                    <td><input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"></td>
-                    <td>Banquetería y Eventos</td>
-                    <td>Eloisa Martinez</td>
-                    <td>Gabriel Palma 640, Recoleta</td>
-                    <td>Servicio de banquetería</td>
-                  </tr>
-                  <tr>
-                    <td><input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"></td>
-                    <td>Decoraciones De Eventos Y Celebraciones E.I.R.L.</td>
-                    <td>Victor Palma</td>
-                    <td>Argomedo 140, 8330398 Santiago</td>
-                    <td>Servicio de decoraciones</td>
-                  </tr>
-                  <tr>
-                    <td><input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"></td>
-                    <td>Juan Pellicer fotógrafo profesional</td>
-                    <td>Juan Pellicer</td>
-                    <td>Huérfanos 714, Santiago</td>
-                    <td>Servicio de Fotógrafo</td>
-                  </tr>
-                </table>
+                <table class="table table-striped-columns">
+                  <thead>
+                      <tr>
+                          <td>ID</td>
+                          <td>NOMBRE</td>
+                          <td>REPRESENTANTE</td>
+                          <td>DIRECCION</td>
+                          <td>TIPO</td>
+                          <td>DETALLE</td>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      {% if proveedor %}
+                      {% for proveedores in proveedor %}
+                      <tr>
+                          <td>{{ proveedores.id }}</td>
+                          <td>{{ proveedores.nombre }}</td>
+                          <td>{{ proveedores.representante }}</td>
+                          <td>{{ proveedores.direccion }}</td>
+                          <td>{{ proveedores.tipo }}</td>
+                          <td>{{ proveedores.detalle }}</td>
+                      </tr>
+                      {% endfor %}
+                      {% else %}
+                      <h5>no hay datos</h5>
+                      {% endif %}
+                  </tbody>
+              </table>
               </div>
-            </div>
-            <div class="row">
-              <div class="col-12">
-                <h4 class="subtitulo"> Listado Proveedores Mantención Instalaciones</h4>
-                <table class="table table-bordered border-primary">
-                  <tr>
-                    <td></td>
-                    <td>PROVEEDOR</td>
-                    <td>REPRESENTANTE</td>
-                    <td>DIRECCIÓN</td>
-                    <td>DETALLE</td>
-                  </tr>
-                  <tr>
-                    <td><input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"></td>
-                    <td>Gasfiteria Zabala</td>
-                    <td>Matias Zabala</td>
-                    <td>Santo Domingo 1240, Santiago</td>
-                    <td>Gasfiter</td>
-                  </tr>
-                  <tr>
-                    <td><input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"></td>
-                    <td>Eléctrico Autorizado SEC</td>
-                    <td></td>
-                    <td>Lord Cochrane 664, Santiago</td>
-                    <td>Electricista</td>
-                  </tr>
-                  <tr>
-                    <td><input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"></td>
-                    <td>García Quiliche Construcciones y Remodelaciones</td>
-                    <td>Roberto García</td>
-                    <td>San Fernando 1477, Conchalí</td>
-                    <td>Construcción y Remodelaciones</td>
-                  </tr>
-                  <tr>
-                    <td><input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"></td>
-                    <td>Ingetech S.A.</td>
-                    <td>Liliana Muñoz</td>
-                    <td>Malaquías Concha 60, 7501552 Providencia</td>
-                    <td>Servicio de Guardias</td>
-                  </tr>
-                  <tr>
-                    <td><input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"></td>
-                    <td>Servicio De Limpieza Ltda</td>
-                    <td>Andrea Tapia</td>
-                    <td>Angamos 289, Santiago</td>
-                    <td>Servicio de Limpieza</td>
-                  </tr>
-                </table>
-              </div>
-            </div>
+            </div>           
+            {% endblock %}
           </div>
           <div class="modal-footer">
               <a href="#" class="false-btn-modal"><i class="bi bi-check2-square"></i> Agregar</a>
