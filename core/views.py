@@ -1,7 +1,12 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import Template, Context
-from .models import Usuario, Cotizacion, Evento, Proveedor, Salon, Servicio_evento
+from .models import Usuario, Cotizacion, Evento, Proveedor, Salon, Servicio
+from .forms import CotizacionForm, UsuarioForm
+
+#variables de inicio de sesion
+usuario = ""
+clave = ""
 
 # Create your views here.
 def home(request):
@@ -39,10 +44,42 @@ def administrador(request):
     return HttpResponse(documento)
 
 def solicitud(request):
-    return render(request, 'core/solicitud.html')
+    data = {
+        'form': CotizacionForm()
+    }
+
+    if request.method == 'POST':
+        formulario = CotizacionForm(data=request.POST)
+        if  formulario.is_valid():
+            formulario.save()
+            data["mensaje"] = "Solicitud enviada, te contactaremos pronto"
+            print(formulario)
+            print("a")
+        else:
+            data["form"] = formulario
+            print(formulario)
+            print("b")
+
+    return render(request, 'core/solicitud.html', data)
 
 def registroUsuario(request):
-    return render(request, 'core/RegistrarUsuario.html')
+    data = {
+        'form': UsuarioForm()
+    }
+
+    if request.method == 'POST':
+        formulario = UsuarioForm(data=request.POST)
+        if  formulario.is_valid():
+            formulario.save()
+            data["mensaje"] = "Solicitud enviada, te contactaremos pronto"
+            print(formulario)
+            print("a")
+        else:
+            data["form"] = formulario
+            print(formulario)
+            print("b")
+
+    return render(request, 'core/RegistrarUsuario.html', data)
 
 #pruebas conexion base de datos
 def pruebasRender(request):
@@ -55,5 +92,4 @@ def pruebasRender(request):
     contexto=Context({"usuarios": objectsU, "cotizaciones":objectsCot})
     documento=template.render(contexto)
     return HttpResponse(documento)
-
 

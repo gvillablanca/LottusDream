@@ -76,29 +76,29 @@ WSGI_APPLICATION = 'LottusDream.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 #database cloud
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.oracle',
-        'NAME': 'dxx8pqlxyxco3wt7_high',
-        'USER': 'LOTTUS_DREAM_ADMIN',
-        'PASSWORD': 'Q1w2e3r4t5y6',
-    }
-}
-
-#database local
 #DATABASES = {
 #    'default': {
 #        'ENGINE': 'django.db.backends.oracle',
-#        'NAME': 'localhost:1521/xe',
+#        'NAME': 'dxx8pqlxyxco3wt7_high',
 #        'USER': 'LOTTUS_DREAM_ADMIN',
 #        'PASSWORD': 'Q1w2e3r4t5y6',
-#        'TEST': {
-#            'USER': 'default_test',
-#            'TBLSPACE': 'default_test_tbls',
-#            'TBLSPACE_TMP': 'default_test_tbls_tmp',
-#        },
-#    },
+#    }
 #}
+
+#database local
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.oracle',
+        'NAME': 'localhost:1521/xe',
+        'USER': 'LOTTUS_DREAM_ADMIN',
+        'PASSWORD': 'Q1w2e3r4t5y6',
+        'TEST': {
+            'USER': 'default_test',
+            'TBLSPACE': 'default_test_tbls',
+            'TBLSPACE_TMP': 'default_test_tbls_tmp',
+        },
+    },
+}
 
 
 # Password validation
@@ -123,7 +123,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es'
 
 TIME_ZONE = 'UTC'
 

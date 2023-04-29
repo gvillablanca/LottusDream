@@ -36,39 +36,23 @@
 
     <!--formulario de solicitud de evento-->
     <section>
+    {% block content %}
         <div class="container">
           <br><br><br>
             <div class="row justify-content-center">
                 <div class="col-lg-8 col-md-8 col-xs-8 col-sm-8">
                     <h1 class="titulo-principal">Registrar Usuario</h1>
                     <form>
-                      <div class="form-group">
-                          <label for="nombre" class="text-formulario">Nombre completo:</label>
-                          <input type="text" id="nombre" name="nombre" placeholder="Nombre Completo" required>
-                      </div>
-                      <div class="form-group">
-                          <label for="correo" class="text-formulario">Correo electrónico:</label>
-                          <input type="email" id="correo" name="correo" placeholder="correo@correo.com" required>
-                      </div>
-                      <div class="form-group">
-                          <label for="clave" class="text-formulario">Contraseña:</label>
-                          <input type="password" id="clave" name="clave" placeholder="Clave/Contraseña" required data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="La clave contraseña debe tener 1 número, 1 letra mayúscula, 1 símbolo y debe tener un largo entre 6 y 18 caracteres">
-                      </div>
-                      <div class="form-group">
-                          <label for="repetir-clave" class="text-formulario">Repetir contraseña:</label>
-                          <input type="password" id="repetir-clave" name="repetir-clave" placeholder="Contraseñas DEBEN coincidir" required>
-                      </div>
-                      <div class="form-group">
-                          <label for="fecha-nacimiento" class="text-formulario">Fecha de nacimiento:</label>
-                          <input type="date" id="fecha-nacimiento" name="fecha-nacimiento" placeholder="Día - Mes - Año" required data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="La edad mínima de registro es de 13 años.">
-                      </div>
+                    {% csrf_token %}
+                        {{ form }}
                       <br><br>
-                      <button type="button" class="false-btn-modal" onclick="guardar()">Registrar</button>
-                      <button type="button" class="false-btn-modal" onclick="limpiar()">Limpiar formulario</button>
+                      <button type="submit" class="false-btn-modal">Registrar</button>
                   </form>
                 </div>
             </div>
         </div>
+        {{ mensaje }}
+      {% endblock %}
       </section>
         <script>
           const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')

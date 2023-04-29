@@ -107,8 +107,7 @@ p{
     width: 850px;
 }
 
-#nombre, #usuario, #correo, #clave, #repetir-clave, #fecha-nacimiento, 
-#direccion, #fono, #mensaje, #telefono, #cantidad-personas, #descripcion, #correoConsulta {
+input, textarea, select{
     display: block;
     width: 100%;
     padding: .375rem .75rem;
