@@ -54,14 +54,15 @@
                 <table class="table table-striped-columns">
                     <thead>
                         <tr>
-                            <td>id</td>
+                            <td>rut</td>
                             <td>nombre</td>
                             <td>apellido</td>
                             <td>correo</td>
+                            <td>clave</td>
                             <td>fecha_nac</td>
                             <td>fono</td>
-                            <td>cargo</td>
                             <td>oficina</td>
+                            <td>cargo</td>
                             <td>tipo</td>
                         </tr>
                     </thead>
@@ -69,14 +70,15 @@
                         {% if usuarios %}
                         {% for usuario in usuarios %}
                         <tr>
-                            <td>{{ usuario.id }}</td>
+                            <td>{{ usuario.rut }}</td>
                             <td>{{ usuario.nombre }}</td>
                             <td>{{ usuario.apellido }}</td>
                             <td>{{ usuario.correo }}</td>
+                            <td>{{ usuario.clave }}</td>
                             <td>{{ usuario.fecha_nac }}</td>
                             <td>{{ usuario.fono }}</td>
-                            <td>{{ usuario.cargo }}</td>
                             <td>{{ usuario.oficina }}</td>
+                            <td>{{ usuario.cargo }}</td>
                             <td>{{ usuario.tipo }}</td>
                         </tr>
                         {% endfor %}
@@ -95,12 +97,17 @@
                     <thead>
                         <tr>
                             <td>id</td>
+                            <td>nombre</td>
+                            <td>apellido</td>
+                            <td>rut</td>
+                            <td>correo</td>
+                            <td>telefono</td>
                             <td>cant_personas</td>
-                            <td>tipo_evento</td>
-                            <td>detalle</td>
-                            <td>estado</td>
-                            <td>id_usuario</td>
+                            <td>hora_inicio</td>
+                            <td>hora_fin</td>
+                            <td>fecha</td>
                             <td>id_evento</td>
+                            <td>detalle</td>
                             <td>id_salon</td>
                         </tr>
                     </thead>
@@ -109,12 +116,17 @@
                         {% for cotizacion in cotizaciones %}
                         <tr>
                             <td>{{ cotizacion.id }}</td>
+                            <td>{{ cotizacion.nombre }}</td>
+                            <td>{{ cotizacion.apellido }}</td>
+                            <td>{{ cotizacion.rut }}</td>
+                            <td>{{ cotizacion.correo }}</td>
+                            <td>{{ cotizacion.telefono }}</td>
                             <td>{{ cotizacion.cant_personas }}</td>
-                            <td>{{ cotizacion.tipo_evento }}</td>
-                            <td>{{ cotizacion.detalle }}</td>
-                            <td>{{ cotizacion.estado }}</td>
-                            <td>{{ cotizacion.id_usuario }}</td>
+                            <td>{{ cotizacion.hora_inicio }}</td>
+                            <td>{{ cotizacion.hora_fin }}</td>
+                            <td>{{ cotizacion.fecha }}</td>
                             <td>{{ cotizacion.id_evento }}</td>
+                            <td>{{ cotizacion.detalle }}</td>
                             <td>{{ cotizacion.id_salon }}</td>
                         </tr>
                         {% endfor %}
