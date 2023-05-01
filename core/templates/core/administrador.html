@@ -83,36 +83,42 @@
           </div>
           <div class="modal-body">
             <table class="table table-striped-columns">
-              <thead>
-                  <tr>
-                      <td>id</td>
-                      <td>cant_personas</td>
-                      <td>tipo_evento</td>
-                      <td>detalle</td>
-                      <td>estado</td>
-                      <td>id_usuario</td>
-                      <td>id_evento</td>
-                      <td>id_salon</td>
-                  </tr>
-              </thead>
-              <tbody>
-                  {% if cotizaciones %}
-                  {% for cotizacion in cotizaciones %}
-                  <tr>
-                      <td>{{ cotizacion.id }}</td>
-                      <td>{{ cotizacion.cant_personas }}</td>
-                      <td>{{ cotizacion.tipo_evento }}</td>
-                      <td>{{ cotizacion.detalle }}</td>
-                      <td>{{ cotizacion.estado }}</td>
-                      <td>{{ cotizacion.id_usuario }}</td>
-                      <td>{{ cotizacion.id_evento }}</td>
-                      <td>{{ cotizacion.id_salon }}</td>
-                  </tr>
-                  {% endfor %}
-                  {% else %}
-                  <h5>no hay datos</h5>
-                  {% endif %}
-              </tbody>
+                    <thead>
+                        <tr>
+                            <td>id</td>
+                            <td>nombre</td>
+                            <td>apellido</td>
+                            <td>correo</td>
+                            <td>telefono</td>
+                            <td>cant_personas</td>
+                            <td>hora_inicio</td>
+                            <td>hora_fin</td>
+                            <td>fecha</td>
+                            <td>id_evento</td>
+                            <td>detalle</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% if cotizaciones %}
+                        {% for cotizacion in cotizaciones %}
+                        <tr>
+                            <td>{{ cotizacion.id }}</td>
+                            <td>{{ cotizacion.nombre }}</td>
+                            <td>{{ cotizacion.apellido }}</td>
+                            <td>{{ cotizacion.correo }}</td>
+                            <td>{{ cotizacion.telefono }}</td>
+                            <td>{{ cotizacion.cant_personas }}</td>
+                            <td>{{ cotizacion.hora_inicio }}</td>
+                            <td>{{ cotizacion.hora_fin }}</td>
+                            <td>{{ cotizacion.fecha }}</td>
+                            <td>{{ cotizacion.id_evento }}</td>
+                            <td>{{ cotizacion.detalle }}</td>
+                        </tr>
+                        {% endfor %}
+                        {% else %}
+                        <h5>no hay datos</h5>
+                        {% endif %}
+                    </tbody>
           </table>
           </div>
           <div class="modal-footer">
