@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 opciones_evento = [
     [1, "CUMPLEAÑOS"],
@@ -115,5 +116,3 @@ class Servicio(models.Model):
 
     def __str__(self):
         return self.nombre
-
-        
