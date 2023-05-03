@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'core',
     'LottusDream',
     'rest_framework',
+    'requests',
 ]
 
 MIDDLEWARE = [
