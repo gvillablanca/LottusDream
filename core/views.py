@@ -1,19 +1,40 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.shortcuts import render, redirect, get_object_or_404
+from django.http import HttpResponse, Http404
 from django.template import Template, Context
 from .models import Usuario, Cotizacion, Evento, Proveedor, Salon, Servicio
-from .forms import CotizacionForm, UsuarioForm
+from .forms import CotizacionForm, UsuarioForm, CustomUserCreationForm
+from django.contrib.auth import authenticate, login
+from django.contrib import messages
+from rest_framework import viewsets
+from .serializer import CotizacionSerializer,EventoSerializer, ProveedorSerializer, ServicioSerializer, UsuarioSerializer, SalonSerializer
 
-#variables de inicio de sesion
-usuario = ""
-clave = ""
+class CotizacionViewset(viewsets.ModelViewSet):
+    queryset =Cotizacion.objects.all()  
+    serializer_class = CotizacionSerializer
+
+class EventoViewset(viewsets.ModelViewSet):
+    queryset =Evento.objects.all()  
+    serializer_class = EventoSerializer
+
+class ProveedorViewset(viewsets.ModelViewSet):
+    queryset =Proveedor.objects.all()  
+    serializer_class = ProveedorSerializer
+
+class UsuarioViewset(viewsets.ModelViewSet):
+    queryset =Usuario.objects.all()  
+    serializer_class = UsuarioSerializer
+
+class SalonViewset(viewsets.ModelViewSet):
+    queryset =Salon.objects.all()  
+    serializer_class = SalonSerializer
+
+class ServicioViewset(viewsets.ModelViewSet):
+    queryset =Servicio.objects.all()  
+    serializer_class = ServicioSerializer
 
 # Create your views here.
 def home(request):
     return render(request, 'core/index.html')
-
-def home2(request):
-    return render(request, 'core/index2.html')
 
 def usuario(request):
     return render(request, 'core/perfil-usuario.html')
@@ -80,6 +101,24 @@ def registroUsuario(request):
             print("b")
 
     return render(request, 'core/RegistrarUsuario.html', data)
+
+
+def registro(request):
+    data = {
+        'form': CustomUserCreationForm()
+    }
+    if request.method == 'POST':
+        formulario = CustomUserCreationForm(data=request.POST)
+        if  formulario.is_valid():
+            formulario.save()
+            user = authenticate(username=formulario.cleaned_data["username"], password=formulario.cleaned_data["password1"])
+            login(request, user)
+            messages.success(request, "usuario registrado correctamente")
+            return redirect(to="home")
+        else:
+            data["form"] = formulario
+    return render(request, 'registration/registro.html', data)
+
 
 #pruebas conexion base de datos
 def pruebasRender(request):

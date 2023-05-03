@@ -31,13 +31,13 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="nav justify-content-end">
               <li class="nav-item">
-                  <a class="nav-link" href="{% url 'home2' %}">Inicio</a>
+                  <a class="nav-link" href="{% url 'home' %}">Inicio</a>
                 </li>
               <li class="nav-item">
-                <a class="nav-link" href=""><i class="bi bi-person-circle"></i>Juan F</a>                
+                <a class="nav-link" href=""><i class="bi bi-person-circle"></i>{{ user.username }}</a>                
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'home' %}"><i class="bi bi-slash-circle"></i> Cerrar Sesión</a>
+                <a class="nav-link" href="{% url 'logout' %}"><i class="bi bi-slash-circle"></i> Cerrar Sesión</a>
               </li>                                          
             </ul>
         </div>
@@ -60,10 +60,10 @@
             <div class="col-2"></div>
             <div class="col-3">
                 <h1 class="titulo-principal subtitulo">Datos Personales</h1><br><br>
-                <p>Nombre:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Juan Flores Vergara</p>
-                <p id="mailto">Correo:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;jfloresvergara1@gmail.com</p>
-                <p>Fono:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+56985257465 </p>
-                <p>Contraseña:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*********************</p>
+                <p>Nombre:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ user.first_name }} {{ user.last_name }}</p>
+                <p id="mailto">Correo:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ user.email }}</p>
+                <p>Fono:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; +56985257465 </p>
+                <p>Contraseña:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ user.password }}</p>
                 <br>
                 <button type="button" class="false-btn-modal" data-bs-toggle="modal" data-bs-target="#solicitud">Solicitudes Eventos generadas</button>
                 <button type="button" class="false-btn-modal" data-bs-toggle="modal" data-bs-target="#modificar">Modificar perfil usuario</button><br><br>

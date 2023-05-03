@@ -43,85 +43,23 @@
                 <li class="nav-item">
                   <a class="nav-link" href="#ubicacion">Ubicación</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#" data-bs-toggle="modal" data-bs-target="#login" id="login-btn">Ingresar</a>
-                </li>
-                <li class="nav-item">
-                    <a class="btn btn-primary" id="user-btn" onclick="perfil()"><i class="bi bi-person-circle"></i> Juan F</a>
-                </li>                                          
+                {% if user.is_authenticated %}
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'logout' %}">Salir</a>
+                  </li>  
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'usuario' %}">{{ user.username }}</a>
+                  </li> 
+                {% else %}
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'login' %}">Ingresar</a>
+                  </li>  
+                {% endif %}                                   
               </ul>
           </div>
         </div>
       </nav>
     
-    <!--modal login-->
-    <div class="modal fade" id="login" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-xs">
-        <div class="modal-content">
-            <div class="modal-header">
-            <h1 class="modal-title fs-5 titulo-principal" id="exampleModalLabel">
-                <img src="{% static 'core/img/Logotipo.png' %}" class="img-banner-in" style="width: 10%;">Ingresar</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body fondo">
-                <div class="container">
-                    <div class="row justify-content-center">
-                      <div class="col-md-6">
-                        <h2 class="text-center">Iniciar sesión</h2>
-                        <form>
-                          <div class="form-group">
-                            <input type="text" class="form-control" id="username" name="username" placeholder="Nombre de usuario" required>
-                            <br><br>
-                          </div>
-                          <div class="form-group">
-                            <input type="password" class="form-control" id="password" name="password" placeholder="Contraseña" required>
-                            <br><br>
-                          </div>
-                        </form>
-                      </div>
-                    </div>
-                  </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="false-btn-modal" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#recuperar">Recuperar contraseña</button>
-                <button type="button" class="false-btn-modal" data-bs-dismiss="modal" onclick="registrar()" >Registrar Usuario</button>
-                <button type="button" class="false-btn-modal" data-bs-dismiss="modal" onclick="logear()" >Iniciar sesión</button>
-            </div>
-        </div>
-        </div>
-    </div>
-
-        <!--modal recuperar contraseña-->
-        <div class="modal fade" id="recuperar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-xl">
-          <div class="modal-content">
-              <div class="modal-header">
-              <h1 class="modal-title fs-5 titulo-principal" id="exampleModalLabel">
-                  <img src="{% static 'core/img/Logotipo.png' %}" class="img-banner-in" style="width: 10%;">Recuperar contraseña</h1>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body fondo">
-                  <div class="container">
-                      <div class="row justify-content-center">
-                        <div class="col-md-6">
-                          <p>Ingrese su mail para recuperar su contraseña, se le enviara un enlace para reiniciar su contraseña</p>
-                          <form>
-                            <div class="form-group">
-                              <label for="correo" class="text-formulario">Correo electrónico:</label>
-                              <input type="email" id="correo" name="correo" placeholder="correo@correo.com" required>
-                          </div>
-                          </form>
-                        </div>
-                      </div>
-                    </div>
-              </div>
-              <div class="modal-footer">
-                  <button type="button" class="false-btn-modal" onclick="recuperar()">Enviar</button>
-              </div>
-          </div>
-          </div>
-      </div>
-
     <!--home-->
     <section id="home" class="fondo">
         <br><br>
